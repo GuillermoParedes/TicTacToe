@@ -28,6 +28,8 @@ window.onload = function main(){
   var _canvas = document.getElementById("tictactoe");
   var _ctx = _canvas.getContext("2d");
   tablero(_ctx);
+  _canvas.addEventListener("mousedown", mouseDown);
+  
 }
 
 function tablero(_ctx){
@@ -40,6 +42,35 @@ function tablero(_ctx){
       _ctx.fillRect(x, y, 145, 145);
     }
   }
+}
+
+function mouseDown(e){
+  var el = e.target;
+  
+  var px = e.clientX;
+  var py = e.clientY;
+  
+  var lx = e.offsetLeft;
+  var ly = e.offsetTop;
+  
+  console.log(px, py);
+  range(px, py);
+}
+
+function range(px, py){
+  if(px < 165 && py < 165){
+    console.log("cuadro 1");
+    circle();
+  }
+}
+
+function circle(){
+  var _ctx = this._ctx;
+  
+  _ctx.beginPath();
+  _ctx.fillStyle = "rgb(125,125,125)";
+  _ctx.arc(123,93,70,0,2*Math.PI, true);
+  _ctx.fill();
 }
 
 //
